@@ -1,0 +1,5 @@
+For Fetching the acession numbers of the strains of particular bacterium 
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=nucleotide&term="Acinetobacter+baumannii"[Organism]+AND+WGS[Filter]&retmax=100&retmode=json
+
+For Fasta files of the given Acession numbers
+https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nucleotide&id=CP046872,CP046873,CP046874,...&rettype=fasta&retmode=text

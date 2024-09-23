@@ -54,7 +54,7 @@ def plot_fcgr_image(image, filename):
 fasta_files = [
     r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\acito.fasta",
     r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\clost.fasta",
-    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\Chlamydomonas.fasta"
+    r"C:\Users\LENOVO\Downloads\Chlamydomonas.fasta"
 ]
 
 k = 4  
