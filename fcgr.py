@@ -52,9 +52,22 @@ def plot_fcgr_image(image, filename):
 
 
 fasta_files = [
-    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\acito.fasta",
-    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\clost.fasta",
-    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\Chlamydomonas.fasta"
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\one.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\two.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\three.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\four.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\five.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\six.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\seven.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\eight.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\nine.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\ten.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\eleven.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\twelve.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\thirteen.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\fourteen.fasta",
+    r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\files\fifteen.fasta"
+    
 ]
 
 k = 4  
@@ -67,6 +80,11 @@ for filepath in fasta_files:
     try:
         sequences = read_sequences(filepath)
         
+        # Create a new folder for the output images based on the filename
+        folder_name = os.path.splitext(os.path.basename(filepath))[0]
+        output_folder = os.path.join(r"C:\Users\LENOVO\Desktop\ResistGen\ResistGen\output", folder_name)
+        os.makedirs(output_folder, exist_ok=True)
+        
         #  FCGR image for each strain
         for strain_id, sequence in sequences:
             kmer_counts = calculate_kmer_frequencies(sequence, k)
@@ -74,12 +92,12 @@ for filepath in fasta_files:
             
             # unique image filename for each strain
             if filepath.endswith(".fasta"):
-                image_filename = filepath.replace(".fasta", f"_{strain_id}_fcgr.png")
+                image_filename = os.path.join(output_folder, f"{strain_id}_fcgr.png")
             else:
-                image_filename = filepath.replace(".gb", f"_{strain_id}_fcgr.png")
+                image_filename = os.path.join(output_folder, f"{strain_id}_fcgr.png")
             
             plot_fcgr_image(fcgr_image, image_filename)
-            print(f"FCGR image for {strain_id} saved as {image_filename}")
+            print(f"FCGR image for {strain_id} saved in {output_folder} as {image_filename}")
     
     except FileNotFoundError as e:
         print(f"Error: {e}")
